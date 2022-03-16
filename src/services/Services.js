@@ -14,7 +14,11 @@ class Services {
 
     getZone = async (idZone) => {
         const res =  await (this.getResource(`${this._url}/zone?id=${idZone}`))
-        console.log(res)
+        return res
+    }
+
+    getRoom = async (idRoom) => {
+        const res =  await (this.getResource(`${this._url}/rooms?id=${idRoom}`))
         return res
     }
 
