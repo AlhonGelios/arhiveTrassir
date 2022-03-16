@@ -1,12 +1,11 @@
-import { useState } from 'react'
+import { useState} from 'react'
 
 import {Form} from 'react-bootstrap'
 import {utils, read} from 'xlsx'
 
-import getCamers from '../services/getCammers'
+import ListItems from './listItems'
 
 function InputArhiveFile() {
-
     const [records, setRecords] = useState([])
 
     async function listenFile(e) {
@@ -35,13 +34,14 @@ function InputArhiveFile() {
             const day = addZero(date.getDate() + 1)
             const month = addZero(date.getMonth() + 1)
             const year = date.getFullYear()
-            const room = item.room
-
-            const fileName = `${item.type}_${item.speciality}_${item.stage}_${year}-${month}-${day}_${item.room}.avi`
 
             const record = {
                 dateOfTrassirUp: `${year}${month}${day}_${timeUp}00`,
-                dateOfTrassirDown: `${year}${month}${day}_${timeDown}00`
+                dateOfTrassirDown: `${year}${month}${day}_${timeDown}00`,
+                type: item.type,
+                speciality: item.speciality,
+                satge: item.stage,
+                idRoom: item.idRoom
             }
 
             recordsOfTrassir.push(record)
@@ -59,9 +59,10 @@ function InputArhiveFile() {
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Выберете файл XLSX</Form.Label>
           <Form.Control type="file" onChange={listenFile} />
+          <ListItems records={records}/>
         </Form.Group>
       </div>
-    );
+    )
   }
 
   export default InputArhiveFile;
