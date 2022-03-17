@@ -1,46 +1,31 @@
-import { useState , useEffect } from 'react'
-
-import Services from '../services/Services'
+import RecordItem from './recordItem'
 
 import '../style/listItems.css'
 
-function ListItems () {
+function ListItems ({records}) {
 
-    const [zone, setZone] = useState([])
-    const [room, setRoom] = useState([])
+    const elements = records.map(item => {
+        const {idRoom, dateOfTrassirUp, dateOfTrassirDown, date, type, speciality, stage, id} = item
+        return (
+            <li key={id}  className={'list-group-item'}>
+                <div className={'list-group-item-records d-flex justify-content-between'}>
+                    <span className='list-group-item-span'>{date}</span>
+                    <span>{type}</span>
+                    <span>{speciality}</span>
+                    <span>{stage}</span>
+                </div>
 
-    const services = new Services()
-
-    useEffect(() => {
-        updateZone()
-    }, [])
-
-    function updateZone () {
-        services.getZone('1000').then(changeZone)
-        services.getRoom('1002').then(changeRoom)
-    }
-
-    function changeZone(data) {
-        setZone(zone => [...zone, ...data])
-    }
-
-    function changeRoom(data) {
-        setRoom(room => [...room, ...data])
-    }
-    //console.log(room);
-    
-    // const elements = room[0].cameras.map(item => {
-    //     return (
-    //         <li>{item}</li>
-    //     )
-    // })
-    
+                <RecordItem idRoom={idRoom} timeUp={dateOfTrassirUp} timeDown={dateOfTrassirDown}/>
+            </li>
+        )
+    })
 
     return (
         <ul className="app-list">
-            {/* {elements} */}
+            {elements}
         </ul>
     )
+
 }
 
 export default ListItems

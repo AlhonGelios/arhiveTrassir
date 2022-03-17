@@ -1,0 +1,18 @@
+.app-list-cameras {
+    margin-top: 5px;
+    background-color: #3d5a80;
+    border-radius: 4px;
+    box-shadow: 15px 15px 30px rgba(0,0,0, .15);
+    color: #fff;
+    display: flex;
+    justify-content: end;
+}
+
+.app-list-title {
+    text-align: center;
+    font-size: 12px;
+}
+
+.list-group-item-cameras {
+    margin: 2px;
+}

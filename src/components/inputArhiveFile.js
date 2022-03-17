@@ -1,6 +1,6 @@
-import { useState} from 'react'
+import { useState } from 'react'
 
-import {Form} from 'react-bootstrap'
+import {Form, Button} from 'react-bootstrap'
 import {utils, read} from 'xlsx'
 
 import ListItems from './listItems'
@@ -24,7 +24,7 @@ function InputArhiveFile() {
             } return item
         }
 
-        data.forEach((item) => {
+        data.forEach((item, i) => {
 
             const date = new Date(item.date)
             const dateUp = new Date(item.timeUp)
@@ -36,11 +36,13 @@ function InputArhiveFile() {
             const year = date.getFullYear()
 
             const record = {
+                id: i,
+                date: `${year}-${month}-${day}`,
                 dateOfTrassirUp: `${year}${month}${day}_${timeUp}00`,
                 dateOfTrassirDown: `${year}${month}${day}_${timeDown}00`,
                 type: item.type,
                 speciality: item.speciality,
-                satge: item.stage,
+                stage: item.stage,
                 idRoom: item.idRoom
             }
 
@@ -60,6 +62,10 @@ function InputArhiveFile() {
           <Form.Label>Выберете файл XLSX</Form.Label>
           <Form.Control type="file" onChange={listenFile} />
           <ListItems records={records}/>
+          <div className='d-flex justify-content-sm-center'>
+            <Button variant="success" className='w-75 p-3' >Выгрузить</Button>
+          </div>
+
         </Form.Group>
       </div>
     )
