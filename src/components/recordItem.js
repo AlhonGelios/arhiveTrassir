@@ -26,7 +26,7 @@ function RecordItem (props) {
     const elements = room[0].cameras.map((item, i) => {
         return (
             <li key={`${room[0].id}_${i}`} className={'list-group-item list-group-item-cameras'}>
-                <span>{item}</span>
+                <h6 className='badge bg-success'>{item}</h6>
                 <Input name ="timeUp" value={props.timeUp} title='&#9650;'/>
                 <Input name ="timeDown" value={props.timeDown} title='&#9660;'/>
             </li>

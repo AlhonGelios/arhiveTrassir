@@ -13,9 +13,18 @@ function ListItems ({records}) {
                         <div className='title'>Дата</div>
                         {date}
                     </span>
-                    <span>{type}</span>
-                    <span>{speciality}</span>
-                    <span>{stage}</span>
+                    <span>
+                        <div className='title'>Тип</div>
+                        {type}
+                    </span>
+                    <span>
+                    <div className='title'>Специальность</div>
+                        {speciality}
+                    </span>
+                    <span>
+                        <div className='title'>Этап</div>
+                        {stage}
+                    </span>
                 </div>
 
                 <RecordItem idRoom={idRoom} timeUp={dateOfTrassirUp} timeDown={dateOfTrassirDown}/>
