@@ -9,7 +9,10 @@ function ListItems ({records}) {
         return (
             <li key={id}  className={'list-group-item'}>
                 <div className={'list-group-item-records d-flex justify-content-between'}>
-                    <span className='list-group-item-span'>{date}</span>
+                    <span className='list-group-item-span'>
+                        <div className='title'>Дата</div>
+                        {date}
+                    </span>
                     <span>{type}</span>
                     <span>{speciality}</span>
                     <span>{stage}</span>

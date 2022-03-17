@@ -4,10 +4,12 @@
     border-radius: 4px;
     box-shadow: 15px 15px 30px rgba(0,0,0, .15);
     color: #fff;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }
 
 .list-group-item-records {
-    padding: 15px 20px;
+    padding: 5px 20px;
     border-bottom: 1px solid #3d5a80;
     cursor: pointer;
 }
@@ -17,6 +19,9 @@
     margin-top: 10px;
     margin-right: 10px;
     margin-bottom: 10px;
+    border-radius: 4px;
+    box-shadow: 15px 15px 30px rgba(0,0,0, .15);
+
 }
 
 .list-group-item:last-child {
@@ -24,6 +29,12 @@
 }
 
 .list-group-item span {
-    line-height: 35px;
+    line-height: 20px;
     font-size: 20px;
+}
+
+.title {
+    font-size: 10px;
+    color:#808080;
+    text-align: center;
 }
