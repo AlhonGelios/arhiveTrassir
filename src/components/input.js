@@ -1,12 +1,9 @@
-import {useState} from 'react'
-
 import {InputGroup, FormControl} from 'react-bootstrap'
 
 function Input (props) {
-    const [value, setValue] = useState(props.value)
 
     function onValueChange(e) {
-        setValue(e.target.value)
+        props.editTimeUp(e.target.value)
     }
 
     return (
@@ -14,9 +11,10 @@ function Input (props) {
             <InputGroup.Text id={props.name}>{props.title}</InputGroup.Text>
             <FormControl
                 aria-describedby={props.name}
-                value = {value}
+                value = {props.value}
                 name = {props.name}
                 onChange={onValueChange}
+
             />
         </InputGroup>
     )

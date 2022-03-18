@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-import {Form, Button} from 'react-bootstrap'
+import {Form, Button, Row, Col} from 'react-bootstrap'
 import {utils, read} from 'xlsx'
 
 import ListItems from './listItems'
@@ -29,8 +29,8 @@ function InputArhiveFile() {
             const date = new Date(item.date)
             const dateUp = new Date(item.timeUp)
             const dateDown = new Date(item.timeDown)
-            const timeUp = `${addZero(dateUp.getHours())}${addZero(dateUp.getMinutes())}`
-            const timeDown = `${addZero(dateDown.getHours())}${addZero(dateDown.getMinutes())}`
+            const timeUp = `${addZero(dateUp.getHours())}:${addZero(dateUp.getMinutes())}`
+            const timeDown = `${addZero(dateDown.getHours())}:${addZero(dateDown.getMinutes())}`
             const day = addZero(date.getDate() + 1)
             const month = addZero(date.getMonth() + 1)
             const year = date.getFullYear()
@@ -38,12 +38,13 @@ function InputArhiveFile() {
             const record = {
                 id: i,
                 date: `${year}-${month}-${day}`,
-                dateOfTrassirUp: `${year}${month}${day}_${timeUp}00`,
-                dateOfTrassirDown: `${year}${month}${day}_${timeDown}00`,
+                dateOfTrassirUp: `${year}-${month}-${day} ${timeUp}:00`,
+                dateOfTrassirDown: `${year}-${month}-${day} ${timeDown}:00`,
                 type: item.type,
                 speciality: item.speciality,
                 stage: item.stage,
-                idRoom: item.idRoom
+                idRoom: item.idRoom,
+                room: item.room
             }
 
             recordsOfTrassir.push(record)
@@ -60,11 +61,17 @@ function InputArhiveFile() {
       <div className="inputArhiveFile">
         <Form.Group controlId="formFile" className="mb-3">
           <Form.Label>Выберете файл XLSX</Form.Label>
-          <Form.Control type="file" onChange={listenFile} />
+          <Row>
+            <Col xs={12} md={8}>
+              <Form.Control type="file" onChange={listenFile} />
+            </Col>
+            <Col xs={6} md={4} className='d-flex justify-content-end'>
+              <Button variant="success" >Выгрузить</Button>
+            </Col>
+          </Row>
+
           <ListItems records={records}/>
-          <div className='d-flex justify-content-sm-center'>
-            <Button variant="success" className='w-75 p-3' >Выгрузить</Button>
-          </div>
+
 
         </Form.Group>
       </div>
