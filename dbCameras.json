@@ -4,18 +4,18 @@
             "id" : 1000,
             "name" : "ФОК Аккредитационная зона",
             "server" : "10.100.2.74",
-            "operatorGUID" : "",
+            "operatorGUI" : "tUEfmhJm",
             "login" : "",
-            "password" : ""
+            "password" : "root"
         },
 
         {
             "id" : 2000,
             "name" : "ФОК Учебная зона",
             "server" : "10.251.0.2",
-            "operatorGUID" : "",
+            "operatorGUI" : "tUEfmhJm",
             "login" : "",
-            "password" : ""
+            "password" : "root"
         },
 
         {

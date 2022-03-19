@@ -14,7 +14,7 @@ function ListItems ({records}) {
         const {selected, timeUp, timeDown, name, data} = dataAll
         const filename = `${data.type}_${data.speciality}_${data.stage}_${data.date}_${name}.avi`
 
-        const request = `https://192.168.1.200:8080/objects/operatorgui_jmxwAqxm/archive_export_ex?channel_name_or_guid=${name}&start_time_YYYYMMDD_HHMMSS=${timeUp}&end_time_YYYYMMDD_HHMMSS=${timeDown}&filename=${filename}&sid=e03qD0eg&options={"is_hardware":0, "video_codec": "MPEG4", "video_bitrate":3000}`
+        const request = `https://192.168.1.200:8080/objects/operatorgui_jmxwAqxm/archive_export_ex?channel_name_or_guid=${name}&start_time_YYYYMMDD_HHMMSS=${timeUp}&end_time_YYYYMMDD_HHMMSS=${timeDown}&filename=${filename}&archive_on_device=0&sid=e03qD0eg`
 
         if (!selected) {
             return

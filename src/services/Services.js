@@ -1,6 +1,10 @@
 class Services {
     _url = 'http://localhost:3000'
 
+    sendRequestTrassirSid = async () => {
+        const req = 'https://192.168.1.40:8080/login?password=root'
+        const req1 = 'https://192.168.1.40:8080/objects/?sid=c2ue9V1W'
+    }
 
     getResource = async (_url) => {
         let res = await fetch(_url)
