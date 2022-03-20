@@ -7,7 +7,7 @@ import '../style/listItems.css'
 
 function ListItems ({records}) {
 
-    const [requests, setRequest] = useState([])
+    const [requests, setRequests] = useState([])
 
     const genRequest = (dataAll) => {
 
@@ -16,17 +16,13 @@ function ListItems ({records}) {
 
         const request = `https://192.168.1.200:8080/objects/operatorgui_jmxwAqxm/archive_export_ex?channel_name_or_guid=${name}&start_time_YYYYMMDD_HHMMSS=${timeUp}&end_time_YYYYMMDD_HHMMSS=${timeDown}&filename=${filename}&archive_on_device=0&sid=e03qD0eg`
 
-        if (!selected) {
-            return
-        } else {
-            // requests.forEach(item => {
-            //     if (item.id === `${data.id}_${name}`){
-
-            //     }
-            // })
-        }
-        setRequest(requests => [...requests, {id: `${data.id}_${name}`, req: request}])
-
+        // setRequests(requests => {
+        //     requests.map(item => {
+        //         if (item.id === `${data.id}_${name}`) {
+        //             item.req = request
+        //         }
+        //     })
+        // })
     }
 
     const elements = records.map(item => {
