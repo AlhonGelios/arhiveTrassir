@@ -15,7 +15,6 @@ function RecordItem (props) {
         services.getRoom(props.idRoom).then(changeRoom)
     }, [])
 
-
     function changeRoom(data) {
         setRoom([...data])
     }

@@ -7,8 +7,7 @@ function Camera (props) {
     const [timeUp, setTimeUp] = useState(props.timeUp)
     const [timeDown, setTimeDown] = useState(props.timeDown)
 
-    const data = props.data
-    const name = props.name
+    const {data, name} = props
 
     function changeSelected() {
         setSelected(selected => !selected)
@@ -21,7 +20,6 @@ function Camera (props) {
     function changeTimeDown(value) {
         setTimeDown(value)
     }
-
 
     useEffect(() => {
         props.request({selected, timeUp, timeDown, name, data})
