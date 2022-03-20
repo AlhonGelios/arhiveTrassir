@@ -11,7 +11,7 @@ function ListItems ({records}) {
 
     const genRequest = (dataAll) => {
 
-        const {selected, timeUp, timeDown, name, data} = dataAll
+        const {selected, timeUp, timeDown, name, data, zoneDate} = dataAll
         const filename = `${data.type}_${data.speciality}_${data.stage}_${data.date}_${name}.avi`
 
         const request = `https://192.168.1.200:8080/objects/operatorgui_jmxwAqxm/archive_export_ex?channel_name_or_guid=${name}&start_time_YYYYMMDD_HHMMSS=${timeUp}&end_time_YYYYMMDD_HHMMSS=${timeDown}&filename=${filename}&archive_on_device=0&sid=e03qD0eg`
@@ -23,7 +23,7 @@ function ListItems ({records}) {
         })
 
         if (!found) {
-            setRequests(requests => [...requests, {id: `${data.id}_${name}`, selected: selected, req: request}])
+            setRequests(requests => [...requests, {id: `${data.id}_${name}`, selected: selected, req: request, zone: zoneDate}])
         } else {
             const arrObj = requests.map(item => {
                 let obj = {}

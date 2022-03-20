@@ -8,6 +8,7 @@ import Camera from './camera'
 function RecordItem (props) {
 
     const [room, setRoom] = useState([{cameras:[], idZone : null}])
+    const [zone, setZone] = useState([])
 
     const services = new Services()
 
@@ -15,8 +16,16 @@ function RecordItem (props) {
         services.getRoom(props.idRoom).then(changeRoom)
     }, [])
 
+    useEffect(() => {
+        services.getZone(room[0].idZone).then(changeZone)
+    }, [room])
+
     function changeRoom(data) {
         setRoom([...data])
+    }
+
+    function changeZone(data) {
+        setZone([...data])
     }
 
     const elements = room[0].cameras.map((item, i) => {
@@ -28,7 +37,7 @@ function RecordItem (props) {
                 timeDown={props.timeDown}
                 data={props.data}
                 request={props.request}
-                idZone={room[0].idZone}
+                zoneDate={zone}
             />
         )
     })

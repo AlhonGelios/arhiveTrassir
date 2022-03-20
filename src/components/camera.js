@@ -7,7 +7,7 @@ function Camera (props) {
     const [timeUp, setTimeUp] = useState(props.timeUp)
     const [timeDown, setTimeDown] = useState(props.timeDown)
 
-    const {data, name} = props
+    const {data, name, zoneDate} = props
 
     function changeSelected() {
         setSelected(selected => !selected)
@@ -22,7 +22,7 @@ function Camera (props) {
     }
 
     useEffect(() => {
-        props.request({selected, timeUp, timeDown, name, data})
+        props.request({selected, timeUp, timeDown, name, data, zoneDate})
     }, [selected, timeUp, timeDown])
 
     const clazz = selected ? 'bg-success' : 'bg-secondary'
