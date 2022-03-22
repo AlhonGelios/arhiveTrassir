@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react'
 import {Form} from 'react-bootstrap'
 import Input from './input'
 
+import Services from '../services/Services'
+
 function Camera (props) {
     const [selected, setSelected] = useState(true)
     const [timeUp, setTimeUp] = useState(props.timeUp)
     const [timeDown, setTimeDown] = useState(props.timeDown)
+    const [zone, setZone] = useState([])
 
-    const {data, name, zoneDate} = props
+    const {data, name} = props
+
+    const services = new Services()
 
     function changeSelected() {
         setSelected(selected => !selected)
@@ -21,8 +26,17 @@ function Camera (props) {
         setTimeDown(value)
     }
 
+    function changeZone(data) {
+        setZone([...data])
+    }
+
     useEffect(() => {
-        props.request({selected, timeUp, timeDown, name, data, zoneDate})
+        services.getZone(props.idZone).then(changeZone)
+    }, [])
+
+
+    useEffect(() => {
+        props.request({selected, timeUp, timeDown, name, data, zone})
     }, [selected, timeUp, timeDown])
 
     const clazz = selected ? 'bg-success' : 'bg-secondary'
