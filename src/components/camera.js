@@ -8,7 +8,7 @@ function Camera (props) {
     const [selected, setSelected] = useState(true)
     const [timeUp, setTimeUp] = useState(props.timeUp)
     const [timeDown, setTimeDown] = useState(props.timeDown)
-    const [zone, setZone] = useState([])
+    const [zone, setZone] = useState([{server: '', operatorGUI: ''}])
 
     const {data, name} = props
 
@@ -37,7 +37,7 @@ function Camera (props) {
 
     useEffect(() => {
         props.request({selected, timeUp, timeDown, name, data, zone})
-    }, [selected, timeUp, timeDown])
+    }, [selected, timeUp, timeDown, zone])
 
     const clazz = selected ? 'bg-success' : 'bg-secondary'
 

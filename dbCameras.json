@@ -3,7 +3,7 @@
         {
             "id" : 1000,
             "name" : "ФОК Аккредитационная зона",
-            "server" : "10.100.2.74",
+            "server" : "10.100.2.74:8080",
             "operatorGUI" : "tUEfmhJm",
             "login" : "",
             "password" : "root"
@@ -12,7 +12,7 @@
         {
             "id" : 2000,
             "name" : "ФОК Учебная зона",
-            "server" : "10.251.0.2",
+            "server" : "10.251.0.2:8080",
             "operatorGUI" : "tUEfmhJm",
             "login" : "",
             "password" : "root"

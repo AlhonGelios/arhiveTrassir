@@ -4,6 +4,7 @@ import RecordItem from './recordItem'
 import {Row, Col} from 'react-bootstrap'
 
 import '../style/listItems.css'
+import { InputCursorText } from 'react-bootstrap-icons'
 
 function ListItems ({records}) {
 
@@ -14,7 +15,7 @@ function ListItems ({records}) {
         const {selected, timeUp, timeDown, name, data, zone} = dataAll
         const filename = `${data.type}_${data.speciality}_${data.stage}_${data.date}_${name}.avi`
 
-        const request = `https://192.168.1.200:8080/objects/operatorgui_jmxwAqxm/archive_export_ex?channel_name_or_guid=${name}&start_time_YYYYMMDD_HHMMSS=${timeUp}&end_time_YYYYMMDD_HHMMSS=${timeDown}&filename=${filename}&archive_on_device=0&sid=e03qD0eg`
+        const request = `https://${zone[0].server}/objects/operatorgui_${zone[0].operatorGUI}/archive_export_ex?channel_name_or_guid=${name}&start_time_YYYYMMDD_HHMMSS=${timeUp}&end_time_YYYYMMDD_HHMMSS=${timeDown}&filename=${filename}&archive_on_device=0&sid=e03qD0eg`
 
         const found = requests.find((item) => {
             if (item.id === `${data.id}_${name}`) {
@@ -23,7 +24,7 @@ function ListItems ({records}) {
         })
 
         if (!found) {
-            setRequests(requests => [...requests, {id: `${data.id}_${name}`, selected: selected, req: request, zone: zone[0]}])
+            setRequests(requests => [...requests, {id: `${data.id}_${name}`, selected: selected, req: request}])
         } else {
             const arrObj = requests.map(item => {
                 let obj = {}
@@ -32,9 +33,9 @@ function ListItems ({records}) {
                     obj.id = `${data.id}_${name}`
                     obj.selected = selected
                     obj.req = request
-                    obj.zone = zone[0]
+                    console.log(request)
                 } else obj = item
-                
+
                 return obj
             })
 
